@@ -1,0 +1,25 @@
+Python
+pycache/
+*.pyc
+*.pyo
+*.pyd
+Jupyter Notebook
+.ipynb_checkpoints/
+Data files (large, generated)
+data/raw/.csv
+data/processed/.csv
+Model files (generated)
+models/*.joblib
+Frontend (Next.js)
+app/node_modules/
+app/.next/
+app/.env
+app/.env.local
+app/.env.*.local
+Python virtual environments
+venv/
+.env/
+*.venv/
+Miscellaneous
+.DS_Store
+*.log
