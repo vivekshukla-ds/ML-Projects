@@ -1,66 +1,48 @@
 # House Prices Prediction Project
 
-## Overview
-This project predicts house prices using the Kaggle "House Prices: Advanced Regression Techniques" dataset. It includes a machine learning pipeline (data preprocessing, model training, prediction) and a Next.js web app for interactive predictions.
+This project predicts house prices using Kaggle's [House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques) dataset. It includes an ML pipeline and a Next.js web app for predictions.
 
-## Folder Structure
-- `data/raw/`: `train.csv`, `test.csv`, `sample_submission.csv`.
-- `data/processed/`: Processed data (`X_train.pkl`, `y_train.pkl`, `X_test.pkl`, `id_test.pkl`, `submission.csv`).
-- `models/`: Saved models and preprocessors (`best_model.joblib`, `num_imputer.joblib`, `cat_imputer.joblib`, `encoder.joblib`, `scaler.joblib`, `outlier_limits.joblib`).
-- `src/`: Python scripts for ML pipeline (`data_preprocessing.py`, `model_training.py`, `prediction.py`).
-- `tests/`: Test preprocessing script (`test_preprocessing.py`).
-- `app/`: Next.js app with FastAPI backend (`app/backend/main.py`).
-- `notebooks/`: Jupyter notebook for EDA and modeling (`01_house_price_eda_and_modeling.ipynb`).
+## Setup
+1. Clone or download the `ML projects` repository.
+2. Navigate to `house-price-prediction/`.
+3. Place `train.csv` and `test.csv` in `house-price-prediction/data/raw/` (download from Kaggle).
+4. Install Python dependencies: `pip install -r house-price-prediction/requirements.txt`.
+5. For the web app, install backend dependencies: `pip install -r house-price-prediction/app/backend/requirements.txt`.
+6. For the frontend, navigate to `house-price-prediction/app/` and run `npm install`.
 
-## ML Pipeline Setup
-1. Place `train.csv`, `test.csv`, `sample_submission.csv` in `data/raw/`.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run scripts:
-   - `python src/data_preprocessing.py` (processes data, saves to `data/processed/`)
-   - `python src/model_training.py` (trains models, saves best to `models/`)
-   - `python src/prediction.py` (generates `data/processed/submission.csv`)
-4. For new test data: Update `new_test_path` in `tests/test_preprocessing.py`, run `python tests/test_preprocessing.py`, then `python src/prediction.py`.
+## Running the ML Pipeline
+1. Preprocess data: `python house-price-prediction/src/data_preprocessing.py`
+2. Train model: `python house-price-prediction/src/model_training.py`
+3. Generate predictions: `python house-price-prediction/src/prediction.py`
 
-## Web App Setup
-1. Navigate to `app/`:
-   ```bash
-   cd app
-   ```
-2. Install Node.js dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the Next.js app:
-   ```bash
-   npm run dev
-   ```
-4. Start the FastAPI backend:
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   uvicorn main:app --reload
-   ```
-5. Access the app at `http://localhost:3000`. Use the form (`PredictionForm.tsx`) to input house features and view predictions (`PredictionChart.tsx`).
-
-## Notes
-- **EDA**: Visualizations in `src/data_preprocessing.py` and `src/model_training.py`. Comment out to speed up execution.
-- **Model**: Best model selected based on Mean CV RMSE.
-- **Paths**: Scripts use `BASE_PATH = r"C:\Users\shukl\Vivek Study DS\Git Project\house-price-prediction"`. Update if your path differs.
-- **Submission**: `submission.csv` must have 1459 rows with `Id` and `SalePrice` for Kaggle.
-- **Web App**: Ensure backend (`app/backend/main.py`) is running for predictions. Frontend expects API at `http://localhost:8000/predict`.
-
-## Dependencies
-See `requirements.txt` for ML pipeline and `app/backend/requirements.txt` for backend.
+## Running the Web App
+1. Start the backend: Navigate to `house-price-prediction/app/backend/` and run `uvicorn main:app --reload`.
+2. Start the frontend: Navigate to `house-price-prediction/app/` and run `npm run dev`.
+3. Access at `http://localhost:3000`.
 
 ## Kaggle Submission
-1. Run ML pipeline scripts to generate `data/processed/submission.csv`.
+1. Run the ML pipeline to generate `house-price-prediction/data/processed/submission.csv`:
+   - `python house-price-prediction/src/data_preprocessing.py`
+   - `python house-price-prediction/src/model_training.py`
+   - `python house-price-prediction/src/prediction.py`
 2. Visit [House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques).
-3. Upload `submission.csv`, add a description (e.g., “Stacking Ensemble”), and submit.
-4. Verify format: 1459 rows, columns `Id`, `SalePrice`.
+3. Upload `house-price-prediction/data/processed/submission.csv`, add a description (e.g., “Stacking Ensemble Submission”).
+4. Verify format: 1459 rows with columns `Id`, `SalePrice`.
 
-## Git Submission
-1. Initialize Git: `git init`
-2. Add files: `git add .` (`.gitignore` excludes large files)
-3. Commit: `git commit -m "House Prices Prediction Project"`
-4. Create GitHub repo, link it: `git remote add origin <repo-url>`
-5. Push: `git push -u origin main`
+## Uploading to GitHub (Web Interface)
+1. Go to your `ML projects` repository (e.g., `https://github.com/yourusername/ML-projects`).
+2. If `house-price-prediction/` doesn’t exist:
+   - Click “Add file” > “Create new file”.
+   - Name: `house-price-prediction/dummy.txt`, content: `Temporary file`, commit with “Created house-price-prediction folder”.
+3. Upload files:
+   - Navigate to `house-price-prediction/`.
+   - Click “Add file” > “Upload files”.
+   - Select files from your computer (e.g., `requirements.txt`, `src/data_preprocessing.py`).
+   - Prepend paths (e.g., `house-price-prediction/src/data_preprocessing.py`).
+   - Commit with messages like “Uploaded src files”.
+4. Exclude files listed in `house-price-prediction/.gitignore` (`data/raw/*`, `models/*`, etc.).
+5. Optionally, delete `dummy.txt` after uploading (click trash icon, commit).
+
+## Notes
+- Large files (`train.csv`, `test.csv`, models) are excluded by `.gitignore`. Download them from Kaggle and place in `house-price-prediction/data/raw/`.
+- Link this project in Kaggle submissions: `https://github.com/yourusername/ML-projects/tree/main/house-price-prediction`.
