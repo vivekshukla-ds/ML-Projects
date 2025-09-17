@@ -1,25 +1,14 @@
-Python
-pycache/
+data/raw/*
+data/processed/*.pkl
+models/*
+__pycache__/
 *.pyc
-*.pyo
-*.pyd
-Jupyter Notebook
 .ipynb_checkpoints/
-Data files (large, generated)
-data/raw/.csv
-data/processed/.csv
-Model files (generated)
-models/*.joblib
-Frontend (Next.js)
-app/node_modules/
 app/.next/
+app/node_modules/
 app/.env
 app/.env.local
 app/.env.*.local
-Python virtual environments
-venv/
-.env/
-*.venv/
-Miscellaneous
-.DS_Store
 *.log
+*.tmp
+.DS_Store
